@@ -1,0 +1,76 @@
+﻿@using System.Text.RegularExpressions
+@rendermode InteractiveAuto
+
+
+<div class="container-fluid pt-2">
+    <div class="row my-2">
+        <div class="col-12">
+            <label for="selectId">Select a Student Id</label>
+        </div>
+        <div class="col-2 mb-2">
+
+            <select id="selectId" class="form-control id-wrapper" @bind="@newStudentId" @bind:after="@(async () => await GetStudent())">
+                <option class="form-control" value="0">Select Id...</option>
+                    @for(int i=1; i<6; i++)
+                    {
+                        <option class="form-control" value="@i">@i</option>
+                    }
+            </select>
+        </div>
+    </div>
+</div>
+
+<hr />
+
+<h2>Retrieved Student</h2>
+
+@if (StudentVM.StudentModel != null)
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    First Name
+                </th>
+                <th>
+                    Middle Name
+                </th>
+                <th>
+                    Last Name
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Phone
+                </th>
+                <th>
+                    Birthdate
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    @StudentVM.StudentModel?.FirstName
+                </td>
+                <td>
+                    @StudentVM.StudentModel?.MiddleName
+                </td>
+                <td>
+                    @StudentVM.StudentModel?.LastName
+                </td>
+                <td>
+                    @StudentVM.StudentModel?.Email
+                </td>
+                <td>
+                    @if (!string.IsNullOrEmpty(StudentVM.StudentModel?.PhoneNumber))
+                        @(Regex.Replace(StudentVM.StudentModel.PhoneNumber, @"(\d{3})(\d{3})(\d{4})", "$1-$2-$3"))
+                </td>
+                <td>
+                    @StudentVM.StudentModel?.BirthDate
+                </td>
+            </tr>
+        </tbody>
+    </table>
+}
