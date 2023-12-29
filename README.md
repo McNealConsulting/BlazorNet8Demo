@@ -1,6 +1,6 @@
-#Blazor .Net 8 Demo
+# Blazor .Net 8 Demo
 
-###This demo is meant to primarily demonstrate a comprehension of a very separated MVVM architecture.
+### This demo is meant to primarily demonstrate a comprehension of a very separated MVVM architecture.
 
 **Notes:**
     1. This is just an example to demonstrate a comprehension of the architecture, I don't necessarily prefer over-architected software.
