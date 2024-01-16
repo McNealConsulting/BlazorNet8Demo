@@ -7,7 +7,8 @@ Also included is a basic example of new .Net 8 Rendermodes for Blazor. It was in
 ### Notes:
     1. Client-side services were omitted for this demo.
     2. I used a very separated architecture to demonstrate a comprehension, I don't typically prefer over-architected software.
-
+    3. Add / Update buttons are not implemented yet.
+    
 ## Installation 
 - Simply Clone this repository
 - Build and run the solution in Visual Studio 2022 (.Net 8 required)
