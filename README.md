@@ -19,7 +19,7 @@ A very separated architecture. I wanted to demonstrate that I've worked in these
 but I don't always think they are necessary depending on the scope of the application.
 
 ### .Net Core
-Setup and configuration for a typical web application using .Net Core, .Net 8, and Entity Framework 8.
+Setup and configuration for a typical web application using .Net Core and Entity Framework 8.
 
 ### Entity Framework Core
 Setup, configuration and utilization of Entity Framework Core 8, including dependency injection for the ApplicationDbContext.
