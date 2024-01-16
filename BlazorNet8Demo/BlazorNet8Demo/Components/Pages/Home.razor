@@ -1,27 +1,51 @@
 ﻿@page "/"
-
+@* @rendermode InteractiveServer *@
 <PageTitle>Home</PageTitle>
 
-<h1>Blazor .Net 8 Demo</h1>
+<h2 class="roboto-regular">Blazor .Net 8 Key Concepts Demo</h2>
 
 <div>
-    This demo is meant to primarily demonstrate a comprehension of a very separated MVVM architecture.
+    This demo is meant to demonstrate a some key comprehensions related to typical .Net web application development.
+</div>
+<div class="pt-1">
+    Also included is a basic example of a new .Net 8 Rendermode that was initially using InteractiveAuto, but performs better using InteractiveServer.
 </div>
 
-<div style="margin-left:15px">
+<div class="pt-1" >
     <b>Notes</b>:
 </div>
-<div style="margin-left:15px">
+<div class="pt-1" style="margin-left:15px">
     1. Client-side services were omitted for this demo.
 </div>
-<div style="margin-left:15px">
-    2. This is just an example to demonstrate a comprehension, I don't necessarily prefer over-architected software.
-</div>
-
-<div class="pt-2">
-    Also included is a basic implementation of a new .Net 8 Blazor component using RendermodeAuto.
+<div class="pt-1" style="margin-left:15px">
+    2. This very separated architecture was done to demonstrate a comprehension, I don't typically prefer over-architected software.
 </div>
 
 <hr />
 
-<BlazorNet8Demo.Client.Pages.SelectStudentDemo />
+<h4>
+    Key Items Demonstrated
+</h4>
+
+<div class="badge bg-primary">Architecture</div>
+<div class="pb-2">
+    A very separated architecture. I wanted to demonstrate that I've worked in these kinds of architectures, 
+    but I don't always think they are necessary depending on the scope of the application.
+</div>
+
+<div class="badge bg-primary">.Net Core</div>
+<div class="pb-2">
+    Setup and configuration for a typical web application using .Net Core, .Net 8, and Entity Framework 8.
+</div>
+
+<div class="badge bg-primary">Entity Framework Core 8</div>
+<div class="pb-2">
+    Setup, configuration and utilization of Entity Framework Core 8, including dependency injection for the ApplicationDbContext.
+    <br />
+    This demo utilizes an in-memory database.
+</div>
+
+<div class="badge bg-primary">Blazor .Net 8</div>
+<div class="pb-2">
+    Demonstrate the fundamentals of a new Blazor Web App solution using .Net 8 & Entity Framework Core 8.
+</div>

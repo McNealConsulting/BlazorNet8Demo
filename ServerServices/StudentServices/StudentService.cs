@@ -1,10 +1,5 @@
 ﻿using RepoLayer.StudentRepo;
 using SharedModels.StudentModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ServerServices.StudentServices;
 public class StudentService : IStudentService
@@ -17,8 +12,13 @@ public class StudentService : IStudentService
     }
     public async Task<StudentModel?> GetStudentByIdAsync(int id)
     {
-        // Perform Validations, and any other tasks before calling the Repository
-        // ...
+        // Here you would perform Validations, and any other tasks before calling the Repository
+        
         return await _studentRepo.GetStudentByIdAsync(id);
+    }
+
+    public async Task<List<StudentModel>> GetStudentsAsync()
+    {
+        return await _studentRepo.GetStudentsAsync();
     }
 }

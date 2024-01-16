@@ -1,5 +1,21 @@
+
+@font-face {
+    font-family: "Roboto-Regular";
+    src: url('fonts/Roboto-Regular.ttf');
+}
+
+@font-face {
+    font-family: "Roboto-Light";
+    src: url('fonts/Roboto-Light.ttf');
+}
+
+@font-face {
+    font-family: "Roboto-Thin";
+    src: url('fonts/Roboto-Thin.ttf');
+}
+
 html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: Roboto-Regular;
 }
 
 a, .btn-link {
@@ -48,4 +64,23 @@ h1:focus {
 
 .darker-border-checkbox.form-check-input {
     border-color: #929292;
+}
+
+/* Custom */
+
+.roboto-light {
+    font-family:Roboto-Light;
+}
+
+.roboto-thin {
+    font-family: Roboto-Thin;
+}
+
+table {
+    --bs-table-striped-bg: #f7f7f7 !important;
+}
+
+.badge {
+    font-size:16px;
+    font-weight:normal;
 }

@@ -1,4 +1,33 @@
-﻿.id-wrapper {
-    width: 100px;
+﻿
+.id-wrapper {
+    width: 200px;
     cursor:pointer;
+}
+
+.font14 {
+    font-size:14px;
+}
+
+.course-grid-header {
+    background-color: #E1F2F7;
+    /*background-color: #E1F247;*/
+}
+
+.info-label {
+    font-weight:bold;
+    margin-right:5px;
+}
+
+.student-info-container {
+    width: 300px;
+    margin-top: 10px;
+}
+
+.student-info {
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.td-spacer {
+    width:20px;
 }

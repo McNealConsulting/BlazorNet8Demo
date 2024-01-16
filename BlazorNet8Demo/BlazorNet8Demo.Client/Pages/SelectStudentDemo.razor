@@ -1,76 +1,121 @@
 ﻿@using System.Text.RegularExpressions
-@rendermode InteractiveAuto
 
+<h4>Student (Mini) Dashboard</h4>
 
-<div class="container-fluid pt-2">
-    <div class="row my-2">
-        <div class="col-12">
-            <label for="selectId">Select a Student Id</label>
+@if(StudentVM.Students != null)
+{
+    if(StudentVM.Students.Count == 0)
+    {
+        <div>No students found.</div>
+    }
+    else
+    {
+        <div class="p-2" style="background-color:#f7f7f7;">
+            <table>
+                <tr>
+                    <td>
+                        Select Student &nbsp;
+                    </td>
+                    <td>
+                        <select id="selectId" class="form-select id-wrapper" @bind="@newStudentId" @bind:after="@(async () => await GetStudent())">
+                            <option class="form-control" value="0">Select Student ... <img src="/images/clickicon.png" height="10" width="10" />  </option>
+                            @foreach (var student in StudentVM.Students)
+                            {
+                                <option class="form-control" value="@student.Id">@student.FullName</option>
+                            }
+                        </select>
+                    </td>
+                    <td class="td-spacer"></td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-success">Add Student</button>
+                    </td>
+                    <td class="td-spacer"></td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-primary" disabled="@disableUpdate">Update Student</button>
+                    </td>
+                </tr>
+            </table>
         </div>
-        <div class="col-2 mb-2">
-
-            <select id="selectId" class="form-control id-wrapper" @bind="@newStudentId" @bind:after="@(async () => await GetStudent())">
-                <option class="form-control" value="0">Select Id...</option>
-                    @for(int i=1; i<6; i++)
-                    {
-                        <option class="form-control" value="@i">@i</option>
-                    }
-            </select>
-        </div>
+    }
+}
+else
+{
+    <div class="mt-2">
+        Loading ...
     </div>
-</div>
+}
 
 <hr />
 
-<h2>Retrieved Student</h2>
-
 @if (StudentVM.StudentModel != null)
 {
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>
-                    First Name
-                </th>
-                <th>
-                    Middle Name
-                </th>
-                <th>
-                    Last Name
-                </th>
-                <th>
-                    Email
-                </th>
-                <th>
-                    Phone
-                </th>
-                <th>
-                    Birthdate
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    @StudentVM.StudentModel?.FirstName
-                </td>
-                <td>
-                    @StudentVM.StudentModel?.MiddleName
-                </td>
-                <td>
-                    @StudentVM.StudentModel?.LastName
-                </td>
-                <td>
-                    @StudentVM.StudentModel?.Email
-                </td>
-                <td>
-                    @if (!string.IsNullOrEmpty(StudentVM.StudentModel?.PhoneNumber))
-                        @(Regex.Replace(StudentVM.StudentModel.PhoneNumber, @"(\d{3})(\d{3})(\d{4})", "$1-$2-$3"))
-                </td>
-                <td>
-                    @StudentVM.StudentModel?.BirthDate
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <h3>@StudentVM.StudentModel.FullName</h3>
+
+    <div>
+        <div class="float-start">
+            <img src="/images/@StudentVM.StudentModel.StudentImage" />
+        </div>
+
+        <div class="float-start student-info-container">
+            <div style="margin-left:10px; margin-top:5px;">
+                <label class="info-label">Email: </label>
+                @StudentVM.StudentModel?.Email
+            </div>
+
+            <div class="student-info">
+                <label class="info-label">Phone: </label>
+                @if (!string.IsNullOrEmpty(StudentVM.StudentModel?.PhoneNumber))
+                    @(Regex.Replace(StudentVM.StudentModel.PhoneNumber, @"(\d{3})(\d{3})(\d{4})", "$1-$2-$3"))
+            </div>
+
+            <div class="student-info">
+                <label class="info-label">Birthdate: </label>
+                @StudentVM.StudentModel?.BirthDate
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix pb-3"></div>
+
+    <h4>Course Schedule</h4>
+    <div class="pt-1 font14">
+        <table class="table table-striped">
+            <thead class="course-grid-header">
+                <tr>
+                    <th>
+                        Course Name
+                    </th>
+                    <th>
+                        Course Desc
+                    </th>
+                    <th>
+                        Start Date
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (StudentVM != null && StudentVM.StudentModel != null)
+                {
+                    @foreach (var course in StudentVM.StudentModel.StudentsCourses.OrderBy(c => c.Course.CourseStartDate))
+                    {
+                        <tr>
+                            <td>
+                                @course.Course.CourseName
+                            </td>
+                            <td>
+                                @course.Course.CourseDescription
+                            </td>
+                            <td width="160">
+                                @course.Course.CourseStartDate.ToString("g")
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <div>No Student Selected.</div>
 }

@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SharedModels.StudentModels;
+﻿using SharedModels.StudentModels;
 
 namespace ViewModels.StudentVM;
 public interface IStudentVM
 {
+    List<StudentModel> Students { get; set; }
     StudentModel? StudentModel { get; set; }
-
-    string FullName { get; }
-
+    Task GetStudentsAsync();
     Task GetStudentByIdAsync(int id);
 
 }

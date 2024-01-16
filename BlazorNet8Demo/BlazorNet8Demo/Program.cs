@@ -1,9 +1,10 @@
 using BlazorNet8Demo.Client.Pages;
 using BlazorNet8Demo.Components;
-using ViewModels.StudentVM;
+using Microsoft.EntityFrameworkCore;
+using RepoLayer.Data;
 using RepoLayer.StudentRepo;
-using SharedModels.StudentModels;
 using ServerServices.StudentServices;
+using ViewModels.StudentVM;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,12 +13,16 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
 
+// Add our DbContext
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+{
+    options.UseInMemoryDatabase(databaseName: "SIS_Demo");
+});
 
 // Register our Dependency Injections
 builder.Services.AddScoped<IStudentVM, StudentVM>();
 builder.Services.AddScoped<IStudentRepo, StudentRepo>();
 builder.Services.AddScoped<IStudentService, StudentService>();
-
 
 var app = builder.Build();
 

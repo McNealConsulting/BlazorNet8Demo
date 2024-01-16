@@ -10,5 +10,6 @@ using System.Threading.Tasks;
 namespace ServerServices.StudentServices;
 public interface IStudentService
 {
+    Task<List<StudentModel>> GetStudentsAsync();
     Task<StudentModel?> GetStudentByIdAsync(int id);
 }
