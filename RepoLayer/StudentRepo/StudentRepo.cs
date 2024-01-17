@@ -23,4 +23,15 @@ public class StudentRepo : IStudentRepo
     {
         return await _context.Students.AsNoTracking().OrderBy(s => s.LastName).ToListAsync();
     }
+
+    public async Task<StudentModel> UpdateStudentAsync(StudentModel student)
+    {
+        var studentEntity = await _context.Students.FindAsync(student.Id);
+            studentEntity.Email = student.Email;
+            studentEntity.PhoneNumber = student.PhoneNumber;
+            studentEntity.BirthDate = student.BirthDate;
+        await _context.SaveChangesAsync();
+
+        return await _context.Students.FindAsync(student.Id);
+    }
 }

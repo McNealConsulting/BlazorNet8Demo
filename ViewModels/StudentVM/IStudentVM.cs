@@ -7,5 +7,6 @@ public interface IStudentVM
     StudentModel? StudentModel { get; set; }
     Task GetStudentsAsync();
     Task GetStudentByIdAsync(int id);
+    Task UpdateStudentAsync(StudentModel student);
 
 }

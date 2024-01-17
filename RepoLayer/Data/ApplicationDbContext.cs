@@ -47,7 +47,6 @@ public class ApplicationDbContext : DbContext
         };
         modelBuilder.Entity<StudentCourseModel>().HasData(studentsCourseList);
 
-
         // Seed Data
         var studentList = new[]
         {
@@ -68,7 +67,7 @@ public class ApplicationDbContext : DbContext
             new CourseModel { Id = 3, CourseName="ENC 1136 Multimodal Writing and Digital Literacy", CourseDescription="Compose and convey creative, well-researched, carefully crafted information through digital platforms.",
                                 CourseStartDate = new DateTime(2024,1,15,14,0,0)},
             new CourseModel { Id = 4, CourseName="ENC 1145 Topics for Composition", CourseDescription="Instruction in expository-argumentative writing related to one special topic selected by the instructor.",
-                                CourseStartDate = new DateTime(2024,1,15,3,0,0)},
+                                CourseStartDate = new DateTime(2024,1,15,15,0,0)},
             new CourseModel { Id = 5, CourseName="ACG 2021 Introduction to Financial Accounting", CourseDescription="Conceptual introduction to financial accounting.",
                                 CourseStartDate = new DateTime(2024,1,15,10,0,0)},
             new CourseModel { Id = 6, CourseName="AMH 2020 United States Since 1877", CourseDescription="Surveys the emergence of modern America as an industrial and world power.",
@@ -77,9 +76,6 @@ public class ApplicationDbContext : DbContext
                                 CourseStartDate = new DateTime(2024,1,15,11,0,0)},
         };
         modelBuilder.Entity<CourseModel>().HasData(courseList);
-
-        
-
 
     }
 }

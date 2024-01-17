@@ -1,0 +1,45 @@
+﻿@if (showModal)
+{
+    <div class="modal show" id="myModal" style="display:block; margin-left:120px; padding-top:40px;" aria-modal="true" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header" style="background-color:#E1F247;">
+                    <h4 class="modal-title">@Header</h4>
+                    <button type="button" class="close" @onclick="@ModalCancel">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    @Body
+                </div>
+
+                <!-- Modal footer -->
+                @* <div class="modal-footer">
+                    <button type="button" class="btn" @onclick="@ModalCancel">Cancel</button>
+                </div> *@
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal-backdrop fade show"></div>
+}
+
+@code {
+    [Parameter]
+    public string Header { get; set; } = string.Empty;
+
+    [Parameter]
+    public RenderFragment? Body { get; set; }
+
+    bool showModal = false;
+
+    public void ModalShow() => showModal = true;
+    public void ModalCancel() => showModal = false;
+
+    // void ModalOk()
+    // {
+    //     showModal = false;
+    // }
+}

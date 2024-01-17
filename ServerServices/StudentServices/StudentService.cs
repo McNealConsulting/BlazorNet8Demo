@@ -21,4 +21,9 @@ public class StudentService : IStudentService
     {
         return await _studentRepo.GetStudentsAsync();
     }
+
+    public async Task<StudentModel> UpdateStudentAsync(StudentModel student)
+    {
+        return await _studentRepo.UpdateStudentAsync(student);
+    }
 }

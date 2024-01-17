@@ -11,6 +11,9 @@ public partial class SelectStudentDemo
     public int newStudentId = 0;
     public bool disableUpdate = true;
 
+    private Modal modal;
+    private Modal resultsModal;
+
     protected override async Task OnInitializedAsync()
     {
         await StudentVM.GetStudentsAsync();
@@ -29,5 +32,16 @@ public partial class SelectStudentDemo
             StudentVM.StudentModel = null;
             disableUpdate = true;
         }
+    }
+
+    private void ShowModal()
+    {
+        modal.ModalShow();
+    }
+
+    private void StudentUpdated()
+    {
+        modal.ModalCancel();
+        resultsModal.ModalShow();
     }
 }

@@ -24,4 +24,9 @@ public class StudentVM : IStudentVM
     {
         Students = await _studentService.GetStudentsAsync();
     }
+
+    public async Task UpdateStudentAsync(StudentModel student)
+    {
+        StudentModel = await _studentService.UpdateStudentAsync(student);
+    }
 }

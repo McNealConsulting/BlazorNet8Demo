@@ -26,12 +26,12 @@
                         </select>
                     </td>
                     <td class="td-spacer"></td>
-                    <td>
+                    @* <td>
                         <button type="button" class="btn btn-sm btn-success">Add Student</button>
                     </td>
-                    <td class="td-spacer"></td>
+                    <td class="td-spacer"></td> *@
                     <td>
-                        <button type="button" class="btn btn-sm btn-primary" disabled="@disableUpdate">Update Student</button>
+                        <button type="button" class="btn btn-sm btn-primary" @onclick="ShowModal" disabled="@disableUpdate">Update Student</button>
                     </td>
                 </tr>
             </table>
@@ -45,11 +45,9 @@ else
     </div>
 }
 
-<hr />
-
 @if (StudentVM.StudentModel != null)
 {
-    <h3>@StudentVM.StudentModel.FullName</h3>
+    <h3 class="pt-2">@StudentVM.StudentModel.FullName</h3>
 
     <div>
         <div class="float-start">
@@ -114,8 +112,28 @@ else
             </tbody>
         </table>
     </div>
+
+    <Modal @ref="modal" Header="Update Student">
+        <Body>
+            <UpdateStudent Student="@StudentVM.StudentModel" StudentVM="StudentVM" StudentUpdated="StudentUpdated" />
+        </Body>
+    </Modal>
 }
 else
 {
-    <div>No Student Selected.</div>
+    <div class="pt-2">No Student Selected.</div>
 }
+
+<Modal @ref="resultsModal" Header="Update Status">
+    <Body>
+        <div style="font-size:18px; color:green;">
+            Successfully Updated!
+
+            <div class="pt-2 text-center">
+                <i class="bi-check2-circle" style="font-size:100px;"></i>
+            </div>
+            
+        </div>
+        
+    </Body>
+</Modal>

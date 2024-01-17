@@ -12,4 +12,6 @@ public interface IStudentService
 {
     Task<List<StudentModel>> GetStudentsAsync();
     Task<StudentModel?> GetStudentByIdAsync(int id);
+
+    Task<StudentModel> UpdateStudentAsync(StudentModel student);
 }
