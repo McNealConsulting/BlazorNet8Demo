@@ -11,7 +11,7 @@ public class StudentRepoIntegrationTests
     DbContextOptions<ApplicationDbContext> options = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase("Test_Demo").Options;
 
     [TestMethod]
-    public void StudentRepo_GetStudentsAsync_ReturnsAllStudentsSuccessfully_StandardCall()
+    public async Task StudentRepo_GetStudentsAsync_ReturnsAllStudentsSuccessfully_StandardCall()
     {
         // Arrange
         var _testContext = new ApplicationDbContext(options);
@@ -21,8 +21,7 @@ public class StudentRepoIntegrationTests
         int expectedMaxId = 5;
 
         // Act
-        var result = _studentRepo.GetStudentsAsync();
-        var returnValues = result.Result;
+        var returnValues = await _studentRepo.GetStudentsAsync();
         var totalRecords = returnValues.Count();
         var firstName = returnValues.FirstOrDefault().FirstName; // Note: Method returns data ordered by lastname
         var maxId = returnValues.Max(s => s.Id);
@@ -34,7 +33,7 @@ public class StudentRepoIntegrationTests
     }
 
     [TestMethod]
-    public void StudentRepo_GetStudentAsync_ReturnsStudentAndRelationshipsSuccessfully_ValidParameter()
+    public async Task StudentRepo_GetStudentAsync_ReturnsStudentAndRelationshipsSuccessfully_ValidParameter()
     {
         // Arrange
         var _testContext = new ApplicationDbContext(options);
@@ -43,8 +42,7 @@ public class StudentRepoIntegrationTests
         List<int> expectedCourseIds = new () { 2,4,6 };
 
         // Act
-        var result = _studentRepo.GetStudentByIdAsync(studentIdParameter);
-        var student = result.Result;
+        var student = await _studentRepo.GetStudentByIdAsync(studentIdParameter);
 
         // Assert
         Assert.AreEqual(student.Id, studentIdParameter);
@@ -54,5 +52,31 @@ public class StudentRepoIntegrationTests
         {
             Assert.IsTrue(expectedCourseIds.Contains(course.CourseId));
         }
+    }
+
+    [TestMethod]
+    public async Task StudentRepo_UpdateStudentAsync_ReturnsUpdatedStudentSuccessfully_ValidParameter()
+    {
+        // Arrange
+        var _testContext = new ApplicationDbContext(options);
+        StudentRepo _studentRepo = new(_testContext);
+        int studentIdParameter = 3;
+        var student = await _studentRepo.GetStudentByIdAsync(studentIdParameter);
+        string initialEmail = student.Email;
+        string initialPhNumber = student.PhoneNumber;
+        DateOnly initialBirthDate = student.BirthDate;
+
+        // Act
+        student.Email = "updatedEmail@sis.edu";
+        student.PhoneNumber = "999-999-9999";
+        student.BirthDate = new DateOnly(09, 09, 09);
+
+        var updatedStudent = await _studentRepo.UpdateStudentAsync(student);
+
+        // Assert
+        Assert.AreNotEqual(initialEmail, updatedStudent.Email);
+        Assert.AreNotEqual(initialPhNumber, updatedStudent.PhoneNumber);
+        Assert.AreNotEqual(initialBirthDate, updatedStudent.BirthDate);
+        Assert.AreEqual(studentIdParameter, updatedStudent.Id);
     }
 }
