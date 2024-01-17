@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerServices", "ServerSer
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepoLayer", "RepoLayer\RepoLayer.csproj", "{1C260498-F4EF-4D65-8391-067365047BDC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepoLayerTests", "RepoLayerTests\RepoLayerTests.csproj", "{8F785A55-FED9-4C43-9DC8-9D1E26DDC5A9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{1C260498-F4EF-4D65-8391-067365047BDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C260498-F4EF-4D65-8391-067365047BDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C260498-F4EF-4D65-8391-067365047BDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F785A55-FED9-4C43-9DC8-9D1E26DDC5A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F785A55-FED9-4C43-9DC8-9D1E26DDC5A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F785A55-FED9-4C43-9DC8-9D1E26DDC5A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F785A55-FED9-4C43-9DC8-9D1E26DDC5A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
