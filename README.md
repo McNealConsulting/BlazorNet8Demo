@@ -6,8 +6,8 @@ Also included is a basic example of new .Net 8 Rendermodes for Blazor. It was in
 
 ### Notes:
     1. Client-side services were omitted for this demo.
-    2. I used a very separated architecture to demonstrate a comprehension, I don't typically prefer over-architected software.
-    3. Add / Update buttons are not implemented yet.
+    2. Data validations were omitted for this demo.
+    3. I used a very separated MVVM architecture to demonstrate a comprehension, but I don't actually prefer over-architected software.
     
 ## Installation 
 - Simply Clone this repository
@@ -15,7 +15,7 @@ Also included is a basic example of new .Net 8 Rendermodes for Blazor. It was in
 
 ## Key Items Demonstrated
 ### Architecture
-A very separated architecture. I wanted to demonstrate that I've worked in these kinds of architectures, 
+A very separated MVVM architecture. I wanted to demonstrate that I've worked in these kinds of architectures, 
 but I don't always think they are necessary depending on the scope of the application.
 
 ### .Net Core
@@ -27,4 +27,7 @@ Setup, configuration and utilization of Entity Framework Core 8, including depen
 This demo utilizes an in-memory database.
 
 ### Blazor .Net 8
-Demonstrates the fundamentals of a new Blazor Web App solution using .Net 8 & Entity Framework Core 8.
+Demonstrate the fundamentals of a new Blazor Web App solution using .Net 8 & Entity Framework Core 8.
+
+### Integration Testing
+Demonstrate the fundamentals of integration testing using MSTest to test the Repository.
