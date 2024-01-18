@@ -10,7 +10,7 @@ Also included is a basic example of new .Net 8 Rendermodes for Blazor. It was in
     3. I used a very separated MVVM architecture to demonstrate a comprehension, but I don't actually prefer over-architected software.
     
 ## Installation 
-- Simply Clone this repository using Visual Studio 2022 (.Net required)
+- Simply Clone this repository using Visual Studio 2022 (.Net 8 required)
 - Build and run the solution in Visual Studio 2022
 - Once the solution is running, if the browser does not automatically load, you can simply pull up a browser and paste in the https localhost url from BlazorNet8Demo > Properties > launchSettings.json (https://localhost:7284)
 
