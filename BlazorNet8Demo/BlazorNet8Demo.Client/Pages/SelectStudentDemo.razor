@@ -10,7 +10,7 @@
     }
     else
     {
-        <div class="p-2" style="background-color:#f7f7f7;">
+        <div class="p-2 mb-3" style="background-color:#f7f7f7;">
             <table>
                 <tr>
                     <td>
@@ -47,70 +47,72 @@ else
 
 @if (StudentVM.StudentModel != null)
 {
-    <h3 class="pt-2">@StudentVM.StudentModel.FullName</h3>
+    <div class="student-card">
+        <h3 class="pt-2">@StudentVM.StudentModel.FullName</h3>
 
-    <div>
-        <div class="float-start">
-            <img src="/images/@StudentVM.StudentModel.StudentImage" />
+        <div>
+            <div class="float-start">
+                <img src="/images/@StudentVM.StudentModel.StudentImage" />
+            </div>
+
+            <div class="float-start student-info-container">
+                <div style="margin-left:10px; margin-top:5px;">
+                    <label class="info-label">Email: </label>
+                    @StudentVM.StudentModel?.Email
+                </div>
+
+                <div class="student-info">
+                    <label class="info-label">Phone: </label>
+                    @if (!string.IsNullOrEmpty(StudentVM.StudentModel?.PhoneNumber))
+                        @(Regex.Replace(StudentVM.StudentModel.PhoneNumber, @"(\d{3})(\d{3})(\d{4})", "$1-$2-$3"))
+                </div>
+
+                <div class="student-info">
+                    <label class="info-label">Birthdate: </label>
+                    @StudentVM.StudentModel?.BirthDate
+                </div>
+            </div>
         </div>
 
-        <div class="float-start student-info-container">
-            <div style="margin-left:10px; margin-top:5px;">
-                <label class="info-label">Email: </label>
-                @StudentVM.StudentModel?.Email
-            </div>
+        <div class="clearfix pb-3"></div>
 
-            <div class="student-info">
-                <label class="info-label">Phone: </label>
-                @if (!string.IsNullOrEmpty(StudentVM.StudentModel?.PhoneNumber))
-                    @(Regex.Replace(StudentVM.StudentModel.PhoneNumber, @"(\d{3})(\d{3})(\d{4})", "$1-$2-$3"))
-            </div>
-
-            <div class="student-info">
-                <label class="info-label">Birthdate: </label>
-                @StudentVM.StudentModel?.BirthDate
-            </div>
-        </div>
-    </div>
-
-    <div class="clearfix pb-3"></div>
-
-    <h4>Course Schedule</h4>
-    <div class="pt-1 font14">
-        <table class="table table-striped">
-            <thead class="course-grid-header">
-                <tr>
-                    <th>
-                        Course Name
-                    </th>
-                    <th>
-                        Course Desc
-                    </th>
-                    <th>
-                        Start Date
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @if (StudentVM != null && StudentVM.StudentModel != null)
-                {
-                    @foreach (var course in StudentVM.StudentModel.StudentsCourses.OrderBy(c => c.Course.CourseStartDate))
+        <h4>Course Schedule</h4>
+        <div class="pt-1 font14">
+            <table class="table table-striped">
+                <thead class="course-grid-header">
+                    <tr>
+                        <th>
+                            Course Name
+                        </th>
+                        <th>
+                            Course Desc
+                        </th>
+                        <th>
+                            Start Date
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (StudentVM != null && StudentVM.StudentModel != null)
                     {
-                        <tr>
-                            <td>
-                                @course.Course.CourseName
-                            </td>
-                            <td>
-                                @course.Course.CourseDescription
-                            </td>
-                            <td width="160">
-                                @course.Course.CourseStartDate.ToString("g")
-                            </td>
-                        </tr>
+                        @foreach (var course in StudentVM.StudentModel.StudentsCourses.OrderBy(c => c.Course.CourseStartDate))
+                        {
+                            <tr>
+                                <td>
+                                    @course.Course.CourseName
+                                </td>
+                                <td>
+                                    @course.Course.CourseDescription
+                                </td>
+                                <td width="160">
+                                    @course.Course.CourseStartDate.ToString("g")
+                                </td>
+                            </tr>
+                        }
                     }
-                }
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <Modal @ref="modal" Header="Update Student">
@@ -121,7 +123,7 @@ else
 }
 else
 {
-    <div class="pt-2">No Student Selected.</div>
+    <div>No Student Selected.</div>
 }
 
 <Modal @ref="resultsModal" Header="Update Status">
@@ -132,8 +134,6 @@ else
             <div class="pt-2 text-center">
                 <i class="bi-check2-circle" style="font-size:100px;"></i>
             </div>
-            
         </div>
-        
     </Body>
 </Modal>
