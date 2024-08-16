@@ -10,8 +10,8 @@
     <ProjectReference Include="..\..\SharedModels\SharedModels.csproj" />
     <ProjectReference Include="..\..\ViewModels\ViewModels.csproj" />
     <ProjectReference Include="..\BlazorNet8Demo.Client\BlazorNet8Demo.Client.csproj" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.1">
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
